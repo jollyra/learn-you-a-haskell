@@ -28,6 +28,22 @@ fib 0 = 0
 fib 1 = 1
 fib x = fib (x - 1) + fib (x - 2)
 
+-- Practice using guards
+-- Find the max or a list of typeclass Ord
+max' :: (Ord a) => [a] -> a
+max' [] = error "Hey! That's an empty list!"
+max' [x] = x
+max' (x:xs)
+  | x > maxTail = x
+  | otherwise = maxTail
+  where maxTail = max' xs
+
+-- Replicate an Int a given number of times
+replicate' :: (Num i, Ord i) => i -> a -> [a]
+replicate' n x
+  | n <= 0 = []
+  | otherwise = x:replicate' (n-1) x
+
 -- Bracket matching interview question
 -- Test cases:
 -- (())
