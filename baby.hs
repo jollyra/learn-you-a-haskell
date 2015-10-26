@@ -56,3 +56,11 @@ brack [x] = False
 brack (a:b:xs) = case a of ')' -> False
                            '(' -> if b == ')' then brack xs
                                               else brack (b:xs)
+
+-- Quicksort
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) =
+  let smallerSorted = quicksort [a | a <- xs, a <= x]
+      biggerSorted = quicksort [a | a <- xs, a > x]
+  in smallerSorted ++ [x] ++ biggerSorted
