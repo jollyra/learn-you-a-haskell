@@ -68,3 +68,11 @@ quicksort (x:xs) =
 -- Curry
 compareWithHundred :: (Num a, Ord a) => a -> Ordering
 compareWithHundred = compare 100
+
+-- Is a string palindrome or not?
+palindrome :: String -> Bool
+palindrome [] = True
+palindrome [x] = True
+palindrome (x:xs)
+	| x == last xs = palindrome (init xs)
+	| otherwise = False
