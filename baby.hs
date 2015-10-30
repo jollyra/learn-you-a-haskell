@@ -44,19 +44,6 @@ replicate' n x
   | n <= 0 = []
   | otherwise = x:replicate' (n-1) x
 
--- Bracket matching interview question
--- Test cases:
--- (())
--- ()()
--- (()
--- )(
-brack :: [Char] -> Bool
-brack [] = True
-brack [x] = False
-brack (a:b:xs) = case a of ')' -> False
-                           '(' -> if b == ')' then brack xs
-                                              else brack (b:xs)
-
 -- Quicksort
 quicksort :: (Ord a) => [a] -> [a]
 quicksort [] = []
