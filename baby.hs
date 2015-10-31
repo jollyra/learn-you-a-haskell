@@ -55,3 +55,10 @@ flip' f = g
 
 flip'' :: (a -> b -> c) -> (b -> a -> c)
 flip'' f x y = f y x
+
+flipLambda :: (a -> b -> c) -> (b -> a -> c)
+flipLambda f = \x y -> f y x
+
+-- Working with folds
+sum' :: (Num a) => [a] -> a
+sum' xs = foldl (\acc x -> acc + x) 0 xs
