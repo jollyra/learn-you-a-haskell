@@ -44,22 +44,14 @@ replicate' n x
   | n <= 0 = []
   | otherwise = x:replicate' (n-1) x
 
--- Quicksort
-quicksort :: (Ord a) => [a] -> [a]
-quicksort [] = []
-quicksort (x:xs) =
-  let smallerSorted = quicksort [a | a <- xs, a <= x]
-      biggerSorted = quicksort [a | a <- xs, a > x]
-  in smallerSorted ++ [x] ++ biggerSorted
-
 -- Curry
 compareWithHundred :: (Num a, Ord a) => a -> Ordering
 compareWithHundred = compare 100
 
--- Is a string palindrome or not?
-palindrome :: String -> Bool
-palindrome [] = True
-palindrome [x] = True
-palindrome (x:xs)
-	| x == last xs = palindrome (init xs)
-	| otherwise = False
+-- Flip' - a standard library function clone
+flip' :: (a -> b -> c) -> (b -> a -> c)
+flip' f = g
+	where g x y = f y x
+
+flip'' :: (a -> b -> c) -> (b -> a -> c)
+flip'' f x y = f y x
