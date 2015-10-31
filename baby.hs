@@ -65,3 +65,8 @@ sum' xs = foldl (\acc x -> acc + x) 0 xs
 
 sum'' :: (Num a) => [a] -> a
 sum'' xs = foldr(\x acc -> x + acc) 0 xs
+
+-- Implement map with foldl
+-- foldl's signature: foldl binary function -> acc -> list
+map' :: (a -> b) -> [a] -> [b]
+map' f xs = foldr (\x acc -> f x : acc) [] xs
