@@ -62,3 +62,6 @@ flipLambda f = \x y -> f y x
 -- Working with folds
 sum' :: (Num a) => [a] -> a
 sum' xs = foldl (\acc x -> acc + x) 0 xs
+
+sum'' :: (Num a) => [a] -> a
+sum'' xs = foldr(\x acc -> x + acc) 0 xs
