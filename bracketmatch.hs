@@ -1,12 +1,4 @@
--- Bracket matching interview question
--- Test cases:
--- (())
--- ()()
--- (()
--- )(
-brack :: [Char] -> Bool
-brack [] = True
-brack [x] = False
-brack (a:b:xs) = case a of ')' -> False
-                           '(' -> if b == ')' then brack xs
-                                              else brack (b:xs)
+import Data.list
+
+stackTest :: (Num a) => String -> a
+stackTest xs = foldl (\acc x -> acc + x) 0 xs
