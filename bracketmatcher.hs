@@ -1,5 +1,3 @@
-import Data.List
-
 validate :: [Char] -> Bool
 validate expression =
         let validatedExpression = foldl foldingFunction [] expression
