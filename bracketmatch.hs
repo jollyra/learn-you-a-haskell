@@ -1,8 +1,17 @@
-sum' :: (Num a) => [a] -> a
-sum' xs = foldl (\acc x -> acc + x) 0 xs
+import Data.List
 
-stackTest :: (Num a) => [a] -> [a]
-stackTest xs = foldr foldingFun [] xs
+-- Test Cases:
+-- "( )"
+-- ")"
+-- "( ) ( )"
+-- "( ( )"
+-- "( ) )"
+-- "( ( ) )"
 
-foldingFun :: (Num a) => a -> [a] -> [a]
-foldingFun y xs = y : xs
+validate :: [Char] -> Bool
+validate expression =
+        let validatedExpression = foldl foldingFunction [] (words expression)
+                where   foldingFunction [] ")" = "Invalid!"
+                        foldingFunction stack "(" = stack ++ "("
+                        foldingFunction stack ")" = init stack
+        in length validatedExpression == 0
