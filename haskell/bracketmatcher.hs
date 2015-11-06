@@ -1,7 +1,7 @@
-validate :: [Char] -> Bool
-validate expression =
-        let validatedExpression = foldl foldingFunction [] expression
-                where   foldingFunction "" ')' = ')':[]
+validate :: String -> Bool
+validate xs =
+        let validatedExpression = foldl foldingFunction [] xs
+                where   foldingFunction [] ')' = ')':[]
                         foldingFunction stack '(' = stack ++ "("
                         foldingFunction stack ')' = init stack
                         foldingFunction stack _ = stack
