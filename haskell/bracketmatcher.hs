@@ -1,8 +1,7 @@
 validate :: String -> Bool
-validate xs =
-        let validatedExpression = foldl foldingFunction [] xs
-                where   foldingFunction [] ')' = ')':[]
-                        foldingFunction stack '(' = stack ++ "("
-                        foldingFunction stack ')' = init stack
-                        foldingFunction stack _ = stack
-        in length validatedExpression == 0
+validate xs = length validatedExpression == 0
+        where validatedExpression = foldl foldingFunction [] xs
+                where foldingFunction [] ')' = error "Bad"
+                      foldingFunction stack '(' = stack ++ "("
+                      foldingFunction stack ')' = init stack
+                      foldingFunction stack _ = stack
