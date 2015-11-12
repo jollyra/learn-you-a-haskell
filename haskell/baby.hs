@@ -70,3 +70,9 @@ sum'' xs = foldr(\x acc -> x + acc) 0 xs
 -- foldl's signature: foldl binary function -> acc -> list
 map' :: (a -> b) -> [a] -> [b]
 map' f xs = foldr (\x acc -> f x : acc) [] xs
+
+initials :: String -> String -> String
+initials fn ln = [f] ++ ". " ++ [l] ++ "."
+        where (f:_) = fn
+              (l:_) = ln
+
