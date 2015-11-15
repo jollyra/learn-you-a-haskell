@@ -1,3 +1,5 @@
+-- Recursive type definition
+-- -------------------------
 data List a = Cons a (List a)
             | Nil
             deriving (Show)
@@ -6,6 +8,24 @@ fromList (x:xs) = Cons x (fromList xs)
 fromList []     = Nil
 
 -- "The will to win means nothing without the will to prepare."
--- exercise 3.1
+-- Exercise 3.1
 fromList' (Cons x xs) = x : fromList' xs
 fromList' Nil = []
+
+
+-- Define the Tree type as a recuresive type
+data Tree' a = Node' a (Tree' a) (Tree' a)
+            | Empty
+              deriving (Show)
+
+-- Create a tree
+simpleTree' = Node' "parent" (Node' "left child" Empty Empty)
+                           (Node' "right child" Empty Empty)
+
+-- Exercise 3.2
+data Tree a = Node a (Maybe (Tree a)) (Maybe (Tree a))
+              deriving (Show)
+
+simpleTree = Node "parent" (Just (Node "left child" Nothing Nothing))
+                           (Just (Node "right child" Nothing Nothing))
+
