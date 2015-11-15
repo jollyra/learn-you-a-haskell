@@ -13,7 +13,7 @@ fromList' (Cons x xs) = x : fromList' xs
 fromList' Nil = []
 
 
--- Define the Tree type as a recuresive type
+-- Define the Tree type as a recursive type
 data Tree' a = Node' a (Tree' a) (Tree' a)
             | Empty
               deriving (Show)
@@ -29,3 +29,9 @@ data Tree a = Node a (Maybe (Tree a)) (Maybe (Tree a))
 simpleTree = Node "parent" (Just (Node "left child" Nothing Nothing))
                            (Just (Node "right child" Nothing Nothing))
 
+
+-- Throwing errors
+second' :: [a] -> a
+second' xs = if null (tail xs)
+             then error "list too short"
+             else head (tail xs)
