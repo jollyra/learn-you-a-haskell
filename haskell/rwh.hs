@@ -35,3 +35,7 @@ second' :: [a] -> a
 second' xs = if null (tail xs)
              then error "list too short"
              else head (tail xs)
+
+-- Exercise 3.1
+length' (x:xs) = 1 + (length' xs)
+length' []     = 0
