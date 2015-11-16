@@ -1,3 +1,5 @@
+import Data.List
+
 -- Recursive type definition
 -- -------------------------
 data List a = Cons a (List a)
@@ -56,3 +58,9 @@ isPalindrome :: Eq a => [a] -> Bool
 isPalindrome [] = True
 isPalindrome [x] = True
 isPalindrome (x:xs) = (x == last xs) && (isPalindrome $ init xs)
+
+-- Exercise 3.6
+sortByLength xs = sortBy lengthGT xs
+    where lengthGT (xs) (ys)
+            | length xs > length ys = GT
+            | length ys > length xs = LT
