@@ -69,5 +69,4 @@ sortByLength xs = sortBy lengthGT xs
 intersperseLists :: a -> [[a]] -> [a]
 intersperseLists s [] = []
 intersperseLists s (x:[]) = x
-intersperseLists s (x:xs) = x ++ [s] ++ (intersperseLists s xs)
-
+intersperseLists s (x:xs) = x ++ s : (intersperseLists s xs)
