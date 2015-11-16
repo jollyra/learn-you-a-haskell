@@ -45,3 +45,14 @@ length' []     = 0
 mean xs = total / lengthOfList
     where total = sum xs
           lengthOfList = (fromIntegral (length xs))
+
+-- Exercise 3.4
+toPalindrome :: [a] -> [a]
+toPalindrome xs = xs ++ reverse xs
+
+
+-- Exercise 3.5
+isPalindrome :: Eq a => [a] -> Bool
+isPalindrome [] = True
+isPalindrome [x] = True
+isPalindrome (x:xs) = (x == last xs) && (isPalindrome $ init xs)
