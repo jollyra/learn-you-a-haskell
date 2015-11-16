@@ -64,3 +64,10 @@ sortByLength xs = sortBy lengthGT xs
     where lengthGT (xs) (ys)
             | length xs > length ys = GT
             | length ys > length xs = LT
+
+-- Exercise 3.7
+intersperseLists :: a -> [[a]] -> [a]
+intersperseLists s [] = []
+intersperseLists s (x:[]) = x
+intersperseLists s (x:xs) = x ++ [s] ++ (intersperseLists s xs)
+
