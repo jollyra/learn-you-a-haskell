@@ -37,5 +37,11 @@ second' xs = if null (tail xs)
              else head (tail xs)
 
 -- Exercise 3.1
+length' :: [a] -> Int
 length' (x:xs) = 1 + (length' xs)
 length' []     = 0
+
+-- Exercise 3.3
+mean xs = total / lengthOfList
+    where total = sum xs
+          lengthOfList = (fromIntegral (length xs))
