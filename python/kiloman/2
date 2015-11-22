@@ -1,0 +1,74 @@
+import heapq
+import pdb
+
+
+class Kiloman():
+
+    def leastShots(self, damageChart, bossHealth):
+        damageChart.append("111")  # starting gun: kilobuster.
+        graph = self._initMatrix(damageChart, bossHealth)
+        for row in graph:
+            print row
+
+        # Set the initial state.
+        priority_queue = []
+        self.visited_nodes = set()
+        start = self.nrows - 1
+        heapq.heappush(priority_queue, (0, start))
+        min_cost = 0
+        
+        #Djikstra's Algorithm.
+        while len(priority_queue) > 0:
+            cost, current_node = heapq.heappop(priority_queue)
+            min_cost += cost
+            for n in self._neighbours(current_node, graph):
+                if self._winCondition():
+                    return min_cost
+                heapq.heappush(priority_queue, n)
+        
+
+    def _initMatrix(self, damageChart, bossHealth):
+        """ Returns an initialized 2d array."""
+        # Create an uninitialized 2d array.
+        g = []
+        self.nrows = len(damageChart)
+        self.ncols = len(bossHealth)
+        i = 0
+        while i < self.nrows:
+            g.append([])
+            i += 1
+
+        # Fill out 2d array with values.
+        for row in range(0, self.nrows):
+            for col in range(0, self.ncols):
+                if row == col:
+                    g[row].append(0)
+                elif int(damageChart[row][col]) == 0:
+                    g[row].append(0)
+                else:          
+                    hp = int(bossHealth[col])
+                    dmg = int(damageChart[row][col])
+                    hits = hp/dmg
+                    g[row].append(hits)
+        return g
+
+    def _winCondition(self):
+        if len(self.visited_nodes) == len(damageChart):
+            return True
+        else:
+            return False
+
+    def _neighbours(self, current_node, graph):
+        neighbours = []
+        i = 0
+        while i < self.nrows:
+            if graph[current_node][i] > 0:
+                neighbours.append((graph[current_node][n]), n)
+        return neighbours
+        
+
+if __name__ == "__main__":
+    k = Kiloman()
+    damageChart = ["070","500","140"]
+    bossHealth = [150,150,150]
+    print k.leastShots(damageChart, bossHealth)
