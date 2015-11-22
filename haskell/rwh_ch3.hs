@@ -14,16 +14,6 @@ fromList []     = Nil
 fromList' (Cons x xs) = x : fromList' xs
 fromList' Nil = []
 
-
--- Define the Tree type as a recursive type
-data Tree' a = Node' a (Tree' a) (Tree' a)
-            | Empty
-              deriving (Show)
-
--- Create a tree
-simpleTree' = Node' "parent" (Node' "left child" Empty Empty)
-                           (Node' "right child" Empty Empty)
-
 -- Throwing errors
 second' :: [a] -> a
 second' xs = if null (tail xs)
@@ -64,12 +54,26 @@ intersperseLists s (x:[]) = x
 intersperseLists s (x:xs) = x ++ s : (intersperseLists s xs)
 
 -- Exercise 3.8
-data Tree a = Node a (Maybe (Tree a)) (Maybe (Tree a))
+data Tree' a = Node' a (Maybe (Tree' a)) (Maybe (Tree' a))
               deriving (Show)
 
-treeHeight :: Tree a -> Int
-treeHeigth t 
+simpleTree0' = Node' "parent" (Just (Node' "left child" Nothing Nothing))
+                           (Just (Node' "right child" Nothing Nothing))
+simpleTree1' = Node' "parent" Nothing Nothing
 
-simpleTree = Node "parent" (Just (Node "left child" Nothing Nothing))
-                           (Just (Node "right child" Nothing Nothing))
+-- Define the Tree type as a recursive type
+data Tree a = Node a (Tree a) (Tree a)
+            | Empty
+              deriving (Show)
 
+-- Create a tree
+h2 = Node "parent" (Node "left child" Empty Empty)
+                   (Node "right child" Empty Empty)
+h0 = Empty
+h4 = Node "parent" (Node "left child" h2 Empty)
+                   (Node "right child" Empty Empty)
+
+height :: Tree a -> Int
+height Empty = 0
+height (Node x left right)
+    | height left > height right = 1 + height left | otherwise = 1 + height right
