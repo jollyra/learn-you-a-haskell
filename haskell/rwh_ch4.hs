@@ -32,4 +32,9 @@ asIntRecursive xs = loop 0 xs
                             in loop acc' xs
 
 asIntFold :: String -> Int
-asIntFold xs = foldl (\acc x -> acc * 10 + digitToInt x) 0 xs
+asIntFold [] = 0
+asIntFold ('-':[]) = 0
+asIntFold ('-':xs) = asIntFold (xs ++ "-")
+asIntFold xs = foldl transform 0 xs
+    where transform acc '-' = acc * (-1)
+          transform acc d = acc * 10 + digitToInt d
