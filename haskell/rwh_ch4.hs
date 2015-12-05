@@ -31,12 +31,15 @@ asIntRecursive xs = loop 0 xs
           loop acc (x:xs) = let acc' = acc * 10 + digitToInt x
                             in loop acc' xs
 
-type ErrorMessage = String
 
-asIntFold :: String -> Either ErrorMessage Int
-asIntFold [] = ErrorMessage "Empty string of digits"
-asIntFold ('-':[]) = ErrorMessage "Cannot convert to Int"
+asIntFold :: String -> Int
+asIntFold [] = 0
+asIntFold ('-':[]) = 0
 asIntFold ('-':xs) = asIntFold (xs ++ "-")
 asIntFold xs = foldl transform 0 xs
     where transform acc '-' = acc * (-1)
           transform acc d = acc * 10 + digitToInt d
+
+-- Clone of prelude's 'concat' using folds
+concat' :: [[a]] -> [a]
+concat' (xs) = foldl (\acc x -> acc ++ x) [] xs
