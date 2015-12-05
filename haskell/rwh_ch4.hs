@@ -31,9 +31,11 @@ asIntRecursive xs = loop 0 xs
           loop acc (x:xs) = let acc' = acc * 10 + digitToInt x
                             in loop acc' xs
 
-asIntFold :: String -> Int
-asIntFold [] = 0
-asIntFold ('-':[]) = 0
+type ErrorMessage = String
+
+asIntFold :: String -> Either ErrorMessage Int
+asIntFold [] = ErrorMessage "Empty string of digits"
+asIntFold ('-':[]) = ErrorMessage "Cannot convert to Int"
 asIntFold ('-':xs) = asIntFold (xs ++ "-")
 asIntFold xs = foldl transform 0 xs
     where transform acc '-' = acc * (-1)
