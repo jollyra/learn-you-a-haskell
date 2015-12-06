@@ -43,3 +43,11 @@ asIntFold xs = foldl transform 0 xs
 -- Clone of prelude's 'concat' using folds
 concat' :: [[a]] -> [a]
 concat' (xs) = foldl (\acc x -> acc ++ x) [] xs
+
+concat'' :: [[a]] -> [a]
+concat'' (xs) = foldr (\x acc -> acc ++ x) [] xs
+
+takeWhile' :: (a -> Bool) -> [a] -> [a]
+takeWhile' f (x:xs)
+    | f x == True = x : takeWhile' f xs
+    | otherwise   = []
