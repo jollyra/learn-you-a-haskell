@@ -62,6 +62,7 @@ simpleTree0' = Node' "parent" (Just (Node' "left child" Nothing Nothing))
 simpleTree1' = Node' "parent" Nothing Nothing
 
 -- Define the Tree type as a recursive type
+-- data <type constructor> = <value constructor> [components]
 data Tree a = Node a (Tree a) (Tree a)
             | Empty
               deriving (Show)
