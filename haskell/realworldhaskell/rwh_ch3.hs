@@ -77,4 +77,15 @@ h4 = Node "parent" (Node "left child" h2 Empty)
 height :: Tree a -> Int
 height Empty = 0
 height (Node x left right)
-    | height left > height right = 1 + height left | otherwise = 1 + height right
+    | height left > height right = 1 + height left 
+    | otherwise = 1 + height right
+
+-- Exercise 9
+data Angle a = Left | Right | Straight
+               deriving (show)
+
+turn :: (Float a) => (a, a) -> (a, a) -> (a, a) -> Angle
+
+
+cross :: (Float a) => (a, a) -> (a, a) -> (a, a) -> a
+
