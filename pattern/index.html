@@ -3,7 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Pattern</title>
-  <style></style>
+  <style>
+	body, html {
+		height: 100%;
+	}
+	#myCanvas {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		border:1px solid #000000;
+	}
+  </style>
 </head>
 
 <body>
@@ -12,10 +22,7 @@
   <script src="lib/lodash.min.js"></script>
 
   <!-- Canvas -->
-  <div id='canvas'></div>
+  <canvas id="myCanvas"></canvas>
   <script type="text/javascript" src="pattern.js"></script>
-  <script type="text/javascript">
-    pattern();
-  </script>
 </body>
 </html>
