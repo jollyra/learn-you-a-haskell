@@ -22,7 +22,7 @@
 	var map = {
 		init: function init(size) {
 			this.stick = []
-			for(int i = 0; i < size * size; i++) {
+			for(var i = 0; i < size * size; i++) {
 				this.stick.push(0);
 			}
 		},
@@ -31,7 +31,7 @@
 			var tileIdx = y * map.size + x;
 			assert.equal(tileIdx < this.stick.tiles.length, true, 'coordinates out of bounds');
 			return this.stick.tiles[tileIdx];
-		}
+		},
 		
 		setTile: function getTile(x, y, val) {
 			var tileIdx = y * map.size + x;
@@ -39,6 +39,7 @@
 			return this.stick.tiles[tileIdx] = val;
 		}
 	}
+
 
 	var viewWidth = $(window).width();
 	map.init(viewWidth);
