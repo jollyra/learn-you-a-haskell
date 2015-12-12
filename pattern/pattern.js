@@ -3,11 +3,8 @@
 		ctx: $("#myCanvas").get(0).getContext("2d"),
 
 		fillPixel: function fillPixel(x, y, colour) {
-			ctx.fillStyle = "#FF0000";
-		},
-
-		fillStick: function fillStick(stick, size) {
-
+			this.ctx.fillStyle = colour;
+			this.ctx.fillRect(x, y, 1, 1);
 		},
 
 		drawGrad: function () {
@@ -18,7 +15,7 @@
 			// Fill with gradient
 			var viewWidth = $(window).width();
 			this.ctx.fillStyle = grd;
-			this.ctx.fillRect(0,0,viewWidth,viewWidth);
+			this.ctx.fillRect(0, 0, viewWidth, viewWidth);
 		}
 	};
 
@@ -35,7 +32,15 @@
 			assert.equal(tileIdx < this.stick.tiles.length, true, 'coordinates out of bounds');
 			return this.stick.tiles[tileIdx];
 		}
+		
+		setTile: function getTile(x, y, val) {
+			var tileIdx = y * map.size + x;
+			assert.equal(tileIdx < this.stick.tiles.length, true, 'coordinates out of bounds');
+			return this.stick.tiles[tileIdx] = val;
+		}
 	}
 
+	var viewWidth = $(window).width();
+	map.init(viewWidth);
 	canvas.drawGrad();
 }) ()
