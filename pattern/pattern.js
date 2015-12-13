@@ -1,7 +1,14 @@
 (function () {
 	var canvas = {
+		w: 800,
+		h: 800,
 		pixelScale: 1,
-		ctx: $("#myCanvas").get(0).getContext("2d"),
+
+		build: function build() {
+			var canvas = $("<canvas width='" + this.w + "' height='" + this.h + "'" + "class='" + "pattern'>" + "</canvas>");
+			this.ctx = canvas.get(0).getContext("2d");
+			canvas.appendTo($("body"));
+		},
 
 		fillPixel: function fillPixel(x, y, colour) {
 			this.ctx.fillStyle = colour;
@@ -49,9 +56,9 @@
 				var val = map.getTile(x,y);
 				var colour;
 				if (val === 1) {
-					colour = "#0066ff";
+					colour = "#FFFFFF";
 				} else if (val === 0) {
-					colour = "#009900";
+					colour = "#000000";
 				}
 				canvas.fillPixel(x, y, colour);
 			}
@@ -59,8 +66,12 @@
 	}
 
 	var viewWidth = $(window).width();
-	var pixelScale = 20;
-	canvas.pixelScale =pixelScale; 
+	var pixelScale = 10;
+
+	canvas.pixelScale =pixelScale;
+	canvas.h = canvas.w = viewWidth;
+	canvas.build();
+
 	map.init(viewWidth / pixelScale);
 	drawPattern(map, canvas);
 	console.log(map, canvas);
