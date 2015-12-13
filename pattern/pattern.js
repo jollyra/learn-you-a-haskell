@@ -41,12 +41,15 @@
 	}
 
 	function drawPattern (map, canvas) {
-		for(var y = 0; y < map.size; y++) {
-			for(var x = 0; x < map.size; x++) {
-				if ((y * x) % 2 == 0) {
-					map.setTile(x, y, 1);
+		for(var i = 1; i <= map.size; i++) {
+			for(var j = 1; j <= map.size; j++) {
+				var x = i * map.size/100;
+				var y = j * map.size/100;
+				var c = Math.trunc(x*x + y*y);
+				if (c % 2 === 0) {
+					map.setTile(j, i, 1);
 				} else {
-					map.setTile(x, y, 0);
+					map.setTile(j, i, 0);
 				}
 			}
 		}
@@ -56,7 +59,7 @@
 				var val = map.getTile(x,y);
 				var colour;
 				if (val === 1) {
-					colour = "#FFFFFF";
+					colour = "#33adff";
 				} else if (val === 0) {
 					colour = "#000000";
 				}
@@ -66,7 +69,7 @@
 	}
 
 	var viewWidth = $(window).width();
-	var pixelScale = 10;
+	var pixelScale = 1;
 
 	canvas.pixelScale =pixelScale;
 	canvas.h = canvas.w = viewWidth;
