@@ -1,15 +1,19 @@
 (function () {
 	var canvas = {
+		pixelScale: 1,
 		ctx: $("#myCanvas").get(0).getContext("2d"),
 
 		fillPixel: function fillPixel(x, y, colour) {
-			console.log(arguments);
 			this.ctx.fillStyle = colour;
-			this.ctx.fillRect(x, y, 1, 1);
+			var pc = this.pixelScale;
+			this.ctx.fillRect(x * pc, y * pc, pc, pc);
 		}
 	};
 
 	var map = {
+		size: 0,
+		stick: [],
+
 		init: function init(size) {
 			this.size = size;
 			this.stick = []
@@ -45,9 +49,9 @@
 				var val = map.getTile(x,y);
 				var colour;
 				if (val === 1) {
-					colour = "F00000";
-				} else if (val ===0) {
-					colour = "0000FF";
+					colour = "#0066ff";
+				} else if (val === 0) {
+					colour = "#009900";
 				}
 				canvas.fillPixel(x, y, colour);
 			}
@@ -55,6 +59,9 @@
 	}
 
 	var viewWidth = $(window).width();
-	map.init(viewWidth);
+	var pixelScale = 20;
+	canvas.pixelScale =pixelScale; 
+	map.init(viewWidth / pixelScale);
 	drawPattern(map, canvas);
+	console.log(map, canvas);
 }) ()
