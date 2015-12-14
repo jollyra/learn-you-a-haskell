@@ -1,4 +1,4 @@
-module SimpleJSON
+module SimpleJSON  -- Module declaration
     (
       JValue(..)  -- '..' notation means export the type and all of it's constructors
     , getString
