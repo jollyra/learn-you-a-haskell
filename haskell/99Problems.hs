@@ -9,6 +9,13 @@ lastButOne :: [a] -> a
 lastButOne (x:y:[]) = x
 lastButOne (x:y:ys) = lastButOne (y:ys)
 
--- Find the k'th element of a list
+-- Find the k'th element of a list.
 index' (x:xs) 0 = x
 index' (x:xs) k = index' xs (k - 1)
+index' _ _      = error "Index out of bound"
+
+-- Find the number of elements in a list.
+length' [] = 0
+length' (x:xs) = countElements (x:xs) 0
+    where countElements (x:xs) n = countElements xs (n + 1)
+          countElements [] n = n
