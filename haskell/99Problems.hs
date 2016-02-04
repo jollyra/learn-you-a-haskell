@@ -8,3 +8,7 @@ last' (x:xs) = last' xs
 lastButOne :: [a] -> a
 lastButOne (x:y:[]) = x
 lastButOne (x:y:ys) = lastButOne (y:ys)
+
+-- Find the k'th element of a list
+index' (x:xs) 0 = x
+index' (x:xs) k = index' xs (k - 1)
