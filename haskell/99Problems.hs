@@ -5,3 +5,6 @@ last' [x]    = x
 last' (x:xs) = last' xs
 
 -- Find the last but one el of a list.
+lastButOne :: [a] -> a
+lastButOne (x:y:[]) = x
+lastButOne (x:y:ys) = lastButOne (y:ys)
