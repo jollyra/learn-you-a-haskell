@@ -19,3 +19,6 @@ length' [] = 0
 length' (x:xs) = countElements (x:xs) 0
     where countElements (x:xs) n = countElements xs (n + 1)
           countElements [] n = n
+
+-- Reverse a list.
+backwards xs = last xs : backwards (init xs)
