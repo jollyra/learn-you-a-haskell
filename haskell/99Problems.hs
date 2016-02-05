@@ -22,3 +22,8 @@ length' (x:xs) = countElements (x:xs) 0
 
 -- Reverse a list.
 backwards xs = last xs : backwards (init xs)
+
+-- Find out whether a list is palindrome.
+isPalindrome []  = True
+isPalindrome (x:[]) = True
+isPalindrome (x:xs) = (x == last xs) && isPalindrome (init xs)
