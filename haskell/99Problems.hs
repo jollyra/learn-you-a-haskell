@@ -27,3 +27,11 @@ backwards xs = last xs : backwards (init xs)
 isPalindrome []  = True
 isPalindrome (x:[]) = True
 isPalindrome (x:xs) = (x == last xs) && isPalindrome (init xs)
+
+-- Flatten a nested list structure
+-- Need a custom data type for this problem because 
+-- lists in Haskell are homogeneous.
+data NestedList a = Elem a | List [NestedList a]
+
+flatten' :: (NestedList a) => a -> a
+
