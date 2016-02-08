@@ -7,3 +7,5 @@ data List a = Cons a (List a)
 l0 = Nil
 la = Cons 1 Nil
 lb = Cons 1 (Cons 2 (Cons 3 Nil))
+
+-- "List" and the built-in list type [a] are isomorphic (the have the same shape).
