@@ -89,3 +89,21 @@ The simplest example: Bool
 The multiple value constructors are referred to as "alternatives" or "cases".
 Tuples vs. data declatations - Use data declarations when type safety and readability are needed (when you have lots of compound values).
 Equivalent to the enums or structs from c/c++.
+
+Local Variables
+"let/in" - A lazy expression local to the "in" block.
+Variables can be shadowed when nested (not a good idea generally)
+"where" clause - Anothe way of introducing variables (more semantic because main logic is presented first).
+
+The Offside Rule
+This is how Haskell uses white space and indentation as a cue to parse sections of code.
+The Offside Rule is not mandatory since you could use curly braces if you chose.
+
+Pattern Matching
+Execute expressions based on a value's shape.
+Irrefutable Patterns are patterns that always succeed. E.g the wildcard or single variable patterns.
+
+Guards "|"
+These are good for comparing pieces of a value already matched by a pattern.
+"otherwise" is a catch-all value bound to True for readability.
+
