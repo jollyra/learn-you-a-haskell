@@ -34,9 +34,11 @@ isPalindrome (x:xs) = (x == last xs) && isPalindrome (init xs)
 data NestedList a = Elem a | List [NestedList a]
                     deriving Show
 
-flatten' (Elem x)          = [x]
-flatten' ( ( Elem x ):xs ) = x : flatten' xs
-flatten' ( ( List x ):xs ) = flatten' x ++ flatten' xs
--- nl0 = (Elem 5)
--- nl1 = ( List [Elem 1, Elem 2, List [Elem 3, Elem 4]] )
--- nl2 = ( List [] )
+flatten' :: NestedList a -> [a]
+flatten' (Elem x) = [x]
+flatten' (List (x:xs)) = flatten' x ++ flatten' (List xs)
+flatten' (List []) = []
+
+nl0 = (Elem 5)
+nl1 = ( List [Elem 1, Elem 2, List [Elem 3, Elem 4]] )
+nl2 = ( List [] )
