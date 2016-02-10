@@ -42,3 +42,11 @@ flatten' (List []) = []
 nl0 = (Elem 5)
 nl1 = ( List [Elem 1, Elem 2, List [Elem 3, Elem 4]] )
 nl2 = ( List [] )
+
+-- Eliminate consecutive dupicates in a list.
+compress' :: Eq a => [a] -> [a]
+compress' xs = foldr isSame [] xs
+    where isSame x [] = x:[]
+          isSame x (y:ys)
+                | x == y    = y:ys
+                | otherwise = x:y:ys
