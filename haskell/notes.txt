@@ -133,3 +133,11 @@ Lambdas
 
 Tail Call Optimization (TCO)
 Transforms tail recursive calls to run in constant time.
+
+Regexp
+Module is Text.Regex.Posix
+`=~` The only function likely needed is the infix regex matching function.
+First arg is the text to match, second is the regexp. Can pass either a String or a ByteString as either argument.
+`=~' is polymorphic in its return type so ghci needs cannot infer the right type without help.
+"my left foot" =~ "foo" :: Bool
+String result returns the empty string for no match.
