@@ -43,6 +43,25 @@ Lists in Haskell must all be of the same type. Lists are surrounded by square br
 [1..10] enumeration notation
 (++) list concatination
 (:) cons operator, which adds an element to the front of a list (cons is short for construct)
+head :: [a] -> a
+tail :: [a] -> [a]
+last :: [a] -> a
+init :: [a] -> [a]
+take n - return the first n elements
+drop n - return all but the first n elements
+length :: [a] -> Int
+null :: [a] -> Bool
+map :: (a -> b) -> [a] -> [b]
+filter :: (a -> Bool) -> [a] -> [a]
+Folds take a step function, an initial value for its accumulator, and a list.
+foldl :: (a -> b -> a) -> a -> [b] -> a "Chews the list from the left (head)"
+foldr :: (a -> b -> b) -> b -> [a] -> b "Chews the list from the right (last)"
+elem :: (Eq a) => a -> [a] -> Bool "indicate whether a value is present in a list"
+`isInfixOf` :: (Eq a) => [a] -> [a] -> Bool
+`isPrefixOf` :: (Eq a) => [a] -> [a] -> Bool
+`isSuffixOf` :: (Eq a) => [a] -> [a] -> Bool
+zip :: [a] -> [b] -> [(a,b)] "takes two lists and 'zips' them into a list of pairs"
+zipWith :: (a -> b -> c) -> [a] -> [b] -> [c] "More useful. Takes 2 lists and applies a function to each pair of elements returning a list"
 
 Strings and Chars
 "Text string" Text strings are surrounded by double quotes.
@@ -61,11 +80,6 @@ Tuples
 () the empty tuple
 Convention dicatates we use a limited number of elements in tuple.
 Tuples can contain different data types unlike a list which can only contain one type.
-
-head - return the first item in a list
-tail - return the all but the head of the list
-take n - return the first n elements
-drop n - return all but the first n elements
 fst - return first item in a tuple
 snd - return second item in a tuple
 
@@ -116,3 +130,6 @@ commposition with '.'
 Lambdas
 '\'
 \(x:_) -> x
+
+Tail Call Optimization (TCO)
+Transforms tail recursive calls to run in constant time.
