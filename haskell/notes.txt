@@ -141,3 +141,14 @@ First arg is the text to match, second is the regexp. Can pass either a String o
 `=~' is polymorphic in its return type so ghci needs cannot infer the right type without help.
 "my left foot" =~ "foo" :: Bool
 String result returns the empty string for no match.
+
+Pure                            | Impure
+-----------------------------------------------------------------
+Always produces the same result |May produce different results
+for the same parameters         |for the same parameters
+-----------------------------------------------------------------
+Never has side effects          |May have side effects
+-----------------------------------------------------------------
+Never alters state              |May alte the global state of the
+                                |program, system, or world
+
