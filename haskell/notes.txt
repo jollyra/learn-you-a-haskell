@@ -107,3 +107,12 @@ Guards "|"
 These are good for comparing pieces of a value already matched by a pattern.
 "otherwise" is a catch-all value bound to True for readability.
 
+as-pattern
+'@' e.g. xs@(_:xs') say to yourself, "bind the variable 'xs' to the value that matches the right side of the '@' symbol"
+
+commposition with '.'
+`.` :: (b -> c) -> (a -> b) -> a -> c
+
+Lambdas
+'\'
+\(x:_) -> x
