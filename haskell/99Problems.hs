@@ -50,6 +50,3 @@ compress' xs = foldr isSame [] xs
           isSame x (y:ys)
                 | x == y    = y:ys
                 | otherwise = x:y:ys
-
--- Pack consecutive duplicates of list elements into sublists
-pack :: Eq a => [a] -> [[a]]
