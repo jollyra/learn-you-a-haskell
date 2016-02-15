@@ -50,3 +50,10 @@ compress' xs = foldr isSame [] xs
           isSame x (y:ys)
                 | x == y    = y:ys
                 | otherwise = x:y:ys
+
+pack :: Eq a => [a] -> [[a]]
+pack xs = foldr func [] xs
+            where func x [] = [[x]]
+                  func x (y:ys)
+                    | (head y) == x = (x:y):ys
+                    | otherwise     = (x:[]):y:ys
