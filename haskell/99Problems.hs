@@ -51,6 +51,7 @@ compress' xs = foldr isSame [] xs
                 | x == y    = y:ys
                 | otherwise = x:y:ys
 
+-- Turns "aabbcc" into ["aa", "bb", "cc"]
 pack :: Eq a => [a] -> [[a]]
 pack xs = foldr func [] xs
             where func x [] = [[x]]
