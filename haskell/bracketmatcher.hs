@@ -4,6 +4,12 @@
 -- (()
 -- ())
 
+-- An delimiter consists of an open delim and a close delim
+type OpenDelim  = String
+type CloseDelim = String
+data Delimiter = Delimiter OpenDelim CloseDelim
+                 deriving (Show)
+
 --                Input     Stack     Result
 bracketmatcher :: String -> String -> Bool
 bracketmatcher [] []     = True
