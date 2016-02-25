@@ -3,15 +3,20 @@
 -- )(
 -- (()
 -- ())
-data Bracket = Round Char Char
-             | Hard  Char Char
-             | Curly Char Char
-               deriving (Show)
+
+
+data Bracket = Bracket BType BPosition deriving (Show)
+data BType = Round | Hard | Curly deriving (Show)
+data BPosition = Open | Close deriving (Show)
 
 readBracket :: Char -> Maybe Bracket
-readBracket '(' = Just (Round '(' ')')
+readBracket '('= Just (Bracket Round Open)
+readBracket ')' = Just (Bracket Round Close)
 readBracket  _  = Nothing
 
+matchBracket :: Bracket -> Bracket -> Bool
+matchBracket (Bracket Round Open) (Bracket Round Close) = True
+matchBracket _                    _                     = False
 
 --                Input     Stack     Result
 bracketmatcher :: String -> String -> Bool
