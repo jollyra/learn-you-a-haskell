@@ -3,17 +3,14 @@
 -- )(
 -- (()
 -- ())
+data Bracket = Round Char Char
+             | Hard  Char Char
+             | Curly Char Char
+               deriving (Show)
 
--- An delimiter consists of an open delim and a close delim
-data Parentheses = Parentheses OpenParen | CloseParen
-                   deriving (Show)
-
-class DelimiterMatch a where
-    isMatch :: a -> a -> Bool
-
-instance DelimiterMatch Parentheses where
-    isMatch OpenParen CloseParen = True
-    isMatch _         _          = False
+readBracket :: Char -> Maybe Bracket
+readBracket '(' = Just (Round '(' ')')
+readBracket  _  = Nothing
 
 
 --                Input     Stack     Result
@@ -33,6 +30,6 @@ bracketmatcher (x:xs) (y:ys)
 
 popAndCompare :: String -> Bool
 popAndCompare [] = False
-popAndCompare (x:__)
+popAndCompare (x:_)
                 | x == '('  = True
                 | otherwise = False
