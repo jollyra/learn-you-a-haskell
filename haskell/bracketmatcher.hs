@@ -5,17 +5,16 @@
 -- ())
 
 -- An delimiter consists of an open delim and a close delim
-type OpenDelim  = String
-type CloseDelim = String
--- data Delimiter = Delimiter OpenDelim CloseDelim
---                  deriving (Show)
+data Parentheses = Parentheses OpenParen | CloseParen
+                   deriving (Show)
 
-class Delimiter a where
-    match :: a -> a -> Bool
+class DelimiterMatch a where
+    isMatch :: a -> a -> Bool
 
-instance Delimiter Char where
-    match '(' ')' = True
-    match _ _     = False
+instance DelimiterMatch Parentheses where
+    isMatch OpenParen CloseParen = True
+    isMatch _         _          = False
+
 
 --                Input     Stack     Result
 bracketmatcher :: String -> String -> Bool
