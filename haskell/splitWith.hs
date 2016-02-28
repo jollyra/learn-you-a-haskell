@@ -32,11 +32,11 @@ lambaSplitter = TestCase $ assertEqual "" [[2],[4]] (splitWith (\x -> x == 3) [2
 noSplits = TestCase $ assertEqual "" [[2,4]] (splitWith odd [2,4])
 
 tests = TestList [
-            TestLabel "Handle emtpy list" emptyList,
-            TestLabel "Split into 3 lists" standard,
-            TestLabel "Starts with a splitter" startWithSplitter,
-            TestLabel "Use lambda splitter" lambaSplitter,
-            TestLabel "Nothing to split on" noSplits
+            emptyList,
+            standard,
+            startWithSplitter,
+            lambaSplitter,
+            noSplits
         ]
 
 main = do
