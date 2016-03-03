@@ -4,15 +4,12 @@
 -- (()
 -- ())
 
-
-data Bracket = Bracket BType BPosition deriving (Show)
-data BType = Round | Hard | Curly deriving (Show)
-data BPosition = Open | Close deriving (Show)
-
-readBracket :: Char -> Maybe Bracket
-readBracket '('= Just (Bracket Round Open)
-readBracket ')' = Just (Bracket Round Close)
-readBracket  _  = Nothing
+-- Use 'lookup'
+delims = [
+    ('(', ')'),
+    ('{', '}'),
+    ('[', ']')
+]
 
 matchBracket :: Bracket -> Bracket -> Bool
 matchBracket (Bracket Round Open) (Bracket Round Close) = True
