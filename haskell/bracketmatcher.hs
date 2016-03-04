@@ -5,15 +5,9 @@
 -- ())
 
 -- Use 'lookup'
-delims = [
-    ('(', ')'),
-    ('{', '}'),
-    ('[', ']')
-]
+delims = [('(', ')'), ('{', '}'), ('[', ']')]
 
-matchBracket :: Bracket -> Bracket -> Bool
-matchBracket (Bracket Round Open) (Bracket Round Close) = True
-matchBracket _                    _                     = False
+-- write a function that looks through the second part of each tuple
 
 --                Input     Stack     Result
 bracketmatcher :: String -> String -> Bool
@@ -21,7 +15,7 @@ bracketmatcher [] []     = True
 bracketmatcher [] stack
                     | not $ null stack = False
 bracketmatcher (x:xs) []
-                    | x == '(' = bracketmatcher xs (x:[])
+                    | (isJust x) == True = bracketmatcher xs (x:[])
                     | x == ')' = False
                     | otherwise = bracketmatcher xs []
 bracketmatcher (x:xs) (y:ys)
