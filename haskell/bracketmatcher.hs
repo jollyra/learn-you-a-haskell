@@ -1,3 +1,6 @@
+import Test.HUnit
+import Data.Maybe
+
 -- (())
 -- ()()
 -- )(
@@ -29,3 +32,14 @@ popAndCompare [] = False
 popAndCompare (x:_)
                 | x == '('  = True
                 | otherwise = False
+
+validList = TestCase $ assertEqual "" True (bracketmatcher "()")
+
+tests = TestList [
+            TestLabel "()" validList
+        ]
+
+testRunner = do
+    runTestTT tests
+
+main = testRunner
