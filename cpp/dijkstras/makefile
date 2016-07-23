@@ -1,10 +1,10 @@
-main : main.cpp
-	g++ main.cpp -o main
+main : graph.cc
+	g++ graph.cc -o graph
 clean:
-	rm main
-run: main.cpp
-	g++ main.cpp -o main
-	./main
-debug: main.cpp
-	g++ -g main.cpp -o main
-	gdb main
+	rm graph
+run: graph.cc
+	g++ graph.cc -o graph
+	./graph
+debug: graph.cc
+	g++ -g graph.cc -o graph
+	gdb graph
