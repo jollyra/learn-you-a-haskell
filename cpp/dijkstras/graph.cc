@@ -22,12 +22,26 @@ class Graph {
             return size_;
         }
 
-        void add_edge() {
-
+        int add_edge(int x, int y, int val) {
+            graph_[x][y] = val;
+            return GOOD;
         }
 
-        void tostring() {
+        int get_edge(const int x, const int y, int &edge) {
+            edge = graph_[x][y];
+            return GOOD;
+        }
 
+        void to_string() {
+            cout << "graph matrix:" << endl;
+            for(int i = 0; i < graph_.size(); i++) {
+                for(int k = 0; k < graph_.size(); k++) {
+                    int edge;
+                    get_edge(i, k, edge);
+                    cout << edge << "\t";
+                }
+                cout << endl;
+            }
         }
 
     private:
@@ -38,5 +52,10 @@ class Graph {
 int main() {
     Graph g = Graph(3);
     cout << "size: " << g.V() << endl;
+
+    g.add_edge(0, 1, 10);
+    g.add_edge(1, 2, 12);
+
+    g.to_string();
     return 0;
 }
