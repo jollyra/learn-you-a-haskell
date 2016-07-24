@@ -5,6 +5,8 @@
 #include <vector>
 using namespace std;
 
+typedef enum Error {GOOD, BAD} Error;
+
 class Graph {
     public:
         Graph() {}
