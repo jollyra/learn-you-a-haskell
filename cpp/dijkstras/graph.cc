@@ -23,11 +23,13 @@ class Graph {
         }
 
         int add_edge(int x, int y, int val) {
+            if (out_of_range_(x, y)) { return BAD; }
             graph_[x][y] = val;
             return GOOD;
         }
 
         int get_edge(const int x, const int y, int &edge) {
+            if (out_of_range_(x, y)) { return BAD; }
             edge = graph_[x][y];
             return GOOD;
         }
@@ -42,6 +44,17 @@ class Graph {
                 }
                 cout << endl;
             }
+        }
+
+        int out_of_range_(int x, int y) {
+            int val = 1;
+            if (x < 0 || x >= size_) {
+                val =  0;
+            }
+            if (y < 0 || y >= size_) {
+                val =  0;
+            }
+            return val;
         }
 
     private:
