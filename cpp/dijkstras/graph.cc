@@ -10,6 +10,7 @@ typedef enum Error {GOOD, BAD} Error;
 class Graph {
     public:
         Graph(int size) {
+            this->size_ = size;
             for(int i = 0; i < size; i++) {
                 graph_.push_back(vector<int> (size, -1));
             }
@@ -18,13 +19,7 @@ class Graph {
         ~Graph() {}
 
         int V() {
-            int count = 0;
-            for(int i = 0; i < graph_.size(); i++) {
-                for(int k = 0; k < graph_.size(); k++) {
-                    count++;
-                }
-            }
-            return count;
+            return size_;
         }
 
         void add_edge() {
@@ -37,6 +32,7 @@ class Graph {
 
     private:
         vector<vector<int> > graph_;
+        int size_;
 };
 
 int main() {
