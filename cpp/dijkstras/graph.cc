@@ -9,8 +9,6 @@ typedef enum Error {GOOD, BAD} Error;
 
 class Graph {
     public:
-        Graph() {}
-
         Graph(int size) {
             for(int i = 0; i < size; i++) {
                 graph_.push_back(vector<int> (size, -1));
