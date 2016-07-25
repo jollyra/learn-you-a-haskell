@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
 
 typedef enum Error {GOOD, BAD} Error;
@@ -87,6 +88,21 @@ class Graph {
             }
             return val;
         }
+};
+
+class ShortestPath {
+    public:
+        ShortestPath(Graph graph) : graph_(graph) {}
+
+        ~ShortestPath() {}
+
+        // Outputs the shortest path from node u to node v.
+        int path(int u, int v, vector<int> &shortest_path) {
+            return GOOD;
+        }
+
+    private:
+        Graph graph_;
 };
 
 int main() {
