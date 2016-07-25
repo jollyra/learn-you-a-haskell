@@ -22,14 +22,26 @@ class Graph {
             return size_;
         }
 
+        int E() {
+            int count = 0;
+            for(int i = 0; i < graph_.size(); i++) {
+                for(int k = 0; k < graph_.size(); k++) {
+                    if(graph_[i][k] > 0) {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
         int add_edge(int x, int y, int val) {
-            if (out_of_range_(x, y)) { return BAD; }
+            if(out_of_range_(x, y)) { return BAD; }
             graph_[x][y] = val;
             return GOOD;
         }
 
         int get_edge(const int x, const int y, int &edge) {
-            if (out_of_range_(x, y)) { return BAD; }
+            if(out_of_range_(x, y)) { return BAD; }
             edge = graph_[x][y];
             return GOOD;
         }
@@ -46,7 +58,26 @@ class Graph {
             }
         }
 
-        int out_of_range_(int x, int y) {
+        int adjacent(int x, int y, int &ret) {
+            if(out_of_range_(x, y)) { return BAD; }
+            ret = 0;
+            if(graph_[x][y] > 0) {
+                ret = 1;
+            }
+            return GOOD;
+        }
+
+        int neighbours(int x, vector<int> &edges) {
+            if(out_of_range_(x)) { return BAD; }
+            edges = graph_[x];
+            return GOOD;
+        }
+
+    private:
+        vector<vector<int> > graph_;
+        int size_;
+
+        int out_of_range_(int x, int y=0) {
             int val = 1;
             if (x < 0 || x >= size_) {
                 val =  0;
@@ -56,10 +87,6 @@ class Graph {
             }
             return val;
         }
-
-    private:
-        vector<vector<int> > graph_;
-        int size_;
 };
 
 int main() {
