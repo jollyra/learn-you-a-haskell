@@ -79,12 +79,12 @@ class Graph {
         int size_;
 
         int out_of_range_(int x, int y=0) {
-            int val = 1;
+            int val = 0;
             if (x < 0 || x >= size_) {
-                val =  0;
+                val =  1;
             }
             if (y < 0 || y >= size_) {
-                val =  0;
+                val =  1;
             }
             return val;
         }
@@ -101,16 +101,23 @@ class ShortestPath {
             return GOOD;
         }
 
+        int path_cost(int u, int v, int cost) {
+            return GOOD;
+        }
+
     private:
         Graph graph_;
 };
 
 int main() {
-    Graph g = Graph(3);
-    cout << "size: " << g.V() << endl;
+    Graph g = Graph(4);
+    cout << "nodes: " << g.V() << endl;
+    cout << "edges: " << g.E() << endl;
 
-    g.add_edge(0, 1, 10);
-    g.add_edge(1, 2, 12);
+    g.add_edge(0, 1, 1);
+    g.add_edge(0, 2, 2);
+    g.add_edge(1, 3, 1);
+    g.add_edge(2, 3, 1);
 
     g.to_string();
     return 0;
